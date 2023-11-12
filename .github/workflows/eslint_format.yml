@@ -20,9 +20,11 @@ jobs:
 
       - name: Install Dependencies
         run: npm install
+        working-directory: ./frontend
 
       - name: Run ESLint to format code
-        run: npx eslint "**/*.jsx" --fix # Adjust the glob pattern to match your JavaScript files
+        run: npx eslint "**/*.jsx" --fix
+        working-directory: ./frontend
 
       - name: Commit changes
         run: |
@@ -31,4 +33,5 @@ jobs:
           git add .
           git commit -m "Apply ESLint fixes" || echo "No changes to commit"
           git push
+        working-directory: ./frontend
 
