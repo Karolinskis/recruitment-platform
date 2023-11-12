@@ -15,8 +15,10 @@ import JobAdCreate from "../views/post/JobAdCreate";
 import JobOffer from "../views/post/JobOffer";
 import JobOfferCreate from "../views/post/JobOfferCreate";
 import Layout from "../components/Layout";
+
 import HireWorker from "../views/employer/HireWorker";
 import RateWorker from "../views/employer/RateWorker";
+import CheckWorkerAvailability from "../views/employer/CheckWorkerAvailability";
 
 import RequireAuth from "../components/RequireAuth";
 import DeleteAccount from "../views/account/DeleteAccount";
@@ -44,8 +46,11 @@ function AppRoutes() {
           <Route path="account" element={<Account />} />
           <Route path="account/passwordReset" element={<ChangePassword />} />
           <Route path="account/deleteUser" element={<DeleteAccount />} />
+
           <Route path="employer/hire-worker" element={<HireWorker />} />
           <Route path="employer/rate-worker" element={<RateWorker/>} />
+          <Route path="employer/check-worker-availability" element={<CheckWorkerAvailability/>} />
+
           <Route path="account/edit" element={<EditAccount />} />
           <Route path="jobsad/id" element={<JobOffer />} />
           <Route path="jobOffer" element={<JobOffer/>} />
