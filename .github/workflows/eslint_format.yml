@@ -1,0 +1,34 @@
+name: ESLint Code Formatter
+
+on: 
+  push:
+    branches:
+      - '**'
+
+jobs:
+  eslint_format:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run ESLint to format code
+        run: npx eslint "**/*.jsx" --fix # Adjust the glob pattern to match your JavaScript files
+
+      - name: Commit changes
+        run: |
+          git config --global user.name 'arnasbrad'
+          git config --global user.email 'arnas1373@gmail.com'
+          git add .
+          git commit -m "Apply ESLint fixes" || echo "No changes to commit"
+          git push
+
