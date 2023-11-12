@@ -22,7 +22,9 @@ import JobAdView from "../views/post/JobAdView";
 
 // Admin
 import AdminDashBoard from "../views/admin/AdminDashboard";
-import OffendingContentView from "../views/admin/OffendingContentView";
+import OffendingContent from "../views/admin/OffendingContent";
+import AdminPostsList from "../views/admin/PostsList";
+import AdminUsersList from "../views/admin/UserList";
 
 // Errors
 import Error404 from "../views/Error404";
@@ -53,7 +55,9 @@ function AppRoutes() {
         
         {/* Admin */}
           <Route path="admin/dashboard" element={<AdminDashBoard />} />
-          <Route path="admin/offendingContent" element={<OffendingContentView />} />
+          <Route path="admin/offendingContent/:type" element={<OffendingContent />} />
+          <Route path="admin/posts" element={<AdminPostsList />} />
+          <Route path="admin/users" element={<AdminUsersList />} />
 
         <Route path="*" element={<Error404 />} />
       </Route>
