@@ -20,6 +20,7 @@ import HireWorker from "../views/employer/HireWorker";
 import RateWorker from "../views/employer/RateWorker";
 import CheckWorkerAvailability from "../views/employer/CheckWorkerAvailability";
 import DeleteEmployerAccount from "../views/employer/DeleteAccount";
+import SendEmailToWorker from "../views/employer/SendEmailToWorker";
 
 import RequireAuth from "../components/RequireAuth";
 import DeleteAccount from "../views/account/DeleteAccount";
@@ -53,6 +54,7 @@ function AppRoutes() {
           <Route path="employer/rate-worker" element={<RateWorker/>} />
           <Route path="employer/check-worker-availability" element={<CheckWorkerAvailability/>} />
           <Route path="employer/delete-account" element={<DeleteEmployerAccount/>} />
+          <Route path="employer/send-email" element={<SendEmailToWorker/>} />
 
           <Route path="account/edit" element={<EditAccount />} />
           <Route path="jobsad/id" element={<JobOffer />} />
