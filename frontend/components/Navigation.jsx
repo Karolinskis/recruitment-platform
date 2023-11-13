@@ -46,8 +46,8 @@ function Navigation() {
       </Container>
       <Navbar.Collapse >
         <Button className='m-2' variant="light" onClick={() => {navigate("/account")}}>Paskyra</Button>
-        <Button className='m-2' variant="light" onClick={() => {navigate("/jobsad")}}>JobAds</Button>
-        <Button className='m-2' variant="danger" onClick={() => {navigate("/"); window.location.reload()}}>Logout</Button>
+        <Button className='m-2' variant="light" onClick={() => {navigate("/jobsad")}}>Darbų pridėjimas</Button>
+        <Button className='m-2' variant="danger" onClick={() => {navigate("/"); window.location.reload()}}>Atsijungimas</Button>
       </Navbar.Collapse>
       </Navbar>
     </>)
