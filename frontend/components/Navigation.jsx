@@ -93,9 +93,38 @@ function Navigation() {
   </>)
     
   }
+  else if (auth.roles === 3) {
+    menu = (
+        <>
+            <Navbar bg="primary" variant="light">
+                <Navbar.Brand onClick={() => {navigate("/dashboard")}} as={Button}>
+                    <div className="mx-2 p-2 bg-white rounded">
+                        <img
+                            src="../src/assets/icon.png"
+                            width="50"/>
+                    </div>
+                </Navbar.Brand>
+                <Container>
+                    <h2 className='text-light'>Employer Actions</h2>
+                </Container>
+                <Navbar.Collapse>
+                    <Button className='m-2' variant="light" onClick={() => {navigate("employer/hire-worker")}}>Hire Worker</Button>
+                    <Button className='m-2' variant="light" onClick={() => {navigate("employer/rate-worker")}}>Rate Worker</Button>
+                    <Button className='m-2' variant="light" onClick={() => {navigate("employer/check-worker-availability")}}>Check Worker Availability</Button>
+                    <Button className='m-2' variant="light" onClick={() => {navigate("employer/send-email")}}>Send Email to Worker</Button>
+                    <Button className='m-2' variant="light" onClick={() => {navigate("employer/edit-offer")}}>Edit Job Offer</Button>
+                    <Button className='m-2' variant="light" onClick={() => {navigate("employer/delete-account")}}>Delete Account</Button>
+                    <Button className='m-2' variant="danger" onClick={refreshPage}>Logout</Button>
+                </Navbar.Collapse>
+            </Navbar>
+        </>
+    );
+}
+
   return (
       menu
     );
   }
   
   export default Navigation;
+
