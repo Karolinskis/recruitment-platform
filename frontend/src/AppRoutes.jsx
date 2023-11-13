@@ -36,24 +36,27 @@ function AppRoutes() {
         <Route path="register" element={<CreateAccount />} />
 
         {/*<Route element={<RequireAuth/>}>*/}
-          <Route path="jobsAd/create" element={<JobAdCreate />} />
-          <Route path="jobsAd" element={<JobAd />} />
-          <Route path="dashboard" element={<DashBoard />} />
-          <Route path="account" element={<Account />} />
-          <Route path="account/passwordReset" element={<ChangePassword />} />
-          <Route path="account/deleteUser" element={<DeleteAccount />} />
-          <Route path="account/edit" element={<EditAccount />} />
-          <Route path="jobsad/id" element={<JobOffer />} />
-          <Route path="jobOffer" element={<JobOffer/>} />
-          <Route path="createAccount" element={<CreateRecruiterAccount />} />
-          <Route path="job" element={<JobAd />} />
-          <Route path="jobsad/:id" element={<JobAdEdit />} />
-          <Route path="jobsad-view/:id" element={<JobAdView />} />
-          <Route path="job/create" element={<JobOfferCreate />} />
-        
+        <Route path="jobsAd/create" element={<JobAdCreate />} />
+        <Route path="jobsAd" element={<JobAd />} />
+        <Route path="dashboard" element={<DashBoard />} />
+        <Route path="account" element={<Account />} />
+        <Route path="account/passwordReset" element={<ChangePassword />} />
+        <Route path="account/deleteUser" element={<DeleteAccount />} />
+        <Route path="account/edit" element={<EditAccount />} />
+        <Route path="jobsad/id" element={<JobOffer />} />
+        <Route path="jobOffer" element={<JobOffer />} />
+        <Route path="createAccount" element={<CreateRecruiterAccount />} />
+        <Route path="job" element={<JobAd />} />
+        <Route path="jobsad/:id" element={<JobAdEdit />} />
+        <Route path="jobsad-view/:id" element={<JobAdView />} />
+        <Route path="job/create" element={<JobOfferCreate />} />
+
         {/* Admin */}
-          <Route path="admin/dashboard" element={<AdminDashBoard />} />
-          <Route path="admin/offendingContent" element={<OffendingContentView />} />
+        <Route path="admin/dashboard" element={<AdminDashBoard />} />
+        <Route
+          path="admin/offendingContent"
+          element={<OffendingContentView />}
+        />
 
         <Route path="*" element={<Error404 />} />
       </Route>
