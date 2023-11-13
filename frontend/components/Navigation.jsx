@@ -45,7 +45,7 @@ function Navigation() {
         <h2 className='text-light'>Sveikas, Darbuotojau</h2>
       </Container>
       <Navbar.Collapse >
-        <Button className='m-2' variant="light" onClick={() => {navigate("/account")}}>Account</Button>
+        <Button className='m-2' variant="light" onClick={() => {navigate("/account")}}>Paskyra</Button>
         <Button className='m-2' variant="light" onClick={() => {navigate("/jobsad")}}>JobAds</Button>
         <Button className='m-2' variant="danger" onClick={() => {navigate("/"); window.location.reload()}}>Logout</Button>
       </Navbar.Collapse>

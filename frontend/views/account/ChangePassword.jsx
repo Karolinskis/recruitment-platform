@@ -35,7 +35,7 @@ function ChangePasswordPage() {
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Group className="mb-3" controlId="formCurrentPassword">
-        <Form.Label>Current Password</Form.Label>
+        <Form.Label>Dabartinis slaptažodis</Form.Label>
         <Form.Control
           type="password"
           value={model.oldPassword}
@@ -45,7 +45,7 @@ function ChangePasswordPage() {
         />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formNewPassword">
-        <Form.Label>New Password</Form.Label>
+        <Form.Label>Naujas slaptažodis</Form.Label>
         <Form.Control
           type="password"
           value={model.newPassword}
