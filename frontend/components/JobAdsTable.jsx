@@ -48,6 +48,7 @@ const JobAdsTable = ({ jobAds }) => {
               size="sm"
               variant="warning"
               onClick={() => GeneratePDF(info.name, info.about, info.salary)}
+              href={`/jobsad-view/${info.id}`}
             >
               Export
             </Button>{" "}

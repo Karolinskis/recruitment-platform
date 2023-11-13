@@ -106,12 +106,13 @@ function PostsList() {
             </tbody>
         </Table>
 
-        <Modal show={showModal} onHide={handleCloseModal}>
+
+        {/*<Modal show={showModal} onHide={handleCloseModal}>
             <Modal.Header closeButton>
                 <Modal.Title>Detali peržiūra</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                {/* Display detailed view of the item here */}
+                {/* Display detailed view of the item here 
                 {selectedItem && (
                     <div>
                         <p><b>ID:</b> {selectedItem.id}</p>
@@ -125,7 +126,7 @@ function PostsList() {
             <Modal.Footer>
                 <Button variant="secondary" onClick={handleCloseModal}>Uždaryti</Button>
             </Modal.Footer>
-        </Modal>
+        </Modal>*/}
     </div>
   );
 }
