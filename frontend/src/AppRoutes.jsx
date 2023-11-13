@@ -65,7 +65,7 @@ function AppRoutes() {
           <Route path="jobOffer" element={<JobOffer/>} />
           <Route path="createAccount" element={<CreateRecruiterAccount />} />
           <Route path="job" element={<JobAd />} />
-          <Route path="jobsad/:id" element={<JobAdEdit />} />
+          <Route path="jobsad/edit/:id" element={<JobAdEdit />} />
           <Route path="jobsad-view/:id" element={<JobAdView />} />
           <Route path="job/create" element={<JobOfferCreate />} />
         

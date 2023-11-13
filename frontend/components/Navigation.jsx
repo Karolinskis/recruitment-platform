@@ -73,6 +73,8 @@ function Navigation() {
                   <Button className='m-2' variant="light" onClick={() => {navigate("employer/check-worker-availability")}}>Check Worker Availability</Button>
                   <Button className='m-2' variant="light" onClick={() => {navigate("employer/send-email")}}>Send Email to Worker</Button>
                   <Button className='m-2' variant="light" onClick={() => {navigate("employer/edit-offer")}}>Edit Job Offer</Button>
+                  <Button className='m-2' variant="light" onClick={() => {navigate("jobsAd")}}>View job ads</Button>
+                  <Button className='m-2' variant="light" onClick={() => {navigate("jobsAd/create")}}>Create job ad</Button>
                   <Button className='m-2' variant="light" onClick={() => {navigate("employer/delete-account")}}>Delete Account</Button>
                   <Button className='m-2' variant="danger" onClick={() => {navigate("/"); window.location.reload()}}>Logout</Button>
               </Navbar.Collapse>
