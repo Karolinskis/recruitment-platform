@@ -53,69 +53,125 @@ function CreateAccountPage() {
 
   return (
     <div className="shadow container w-50 p-3 bg-white rounded">
-      <h1 className="text-center">Create an account</h1>
+      <h1 className="text-center">Susikurkite paskyrą</h1>
       <Form onSubmit={handleSubmit}>
         <Row>
+          <Form.Group className="mb-3" controlId="UserType">
+            <Form.Label as="legend">Pasirinkite vaidmenį:</Form.Label>
+            <Form.Check
+              type="radio"
+              label="Darbdavys"
+              name="userType"
+              id="employer"
+              onChange={() => setUserType('employer')}
+            />
+            <Form.Check
+              type="radio"
+              label="Darbuotojas"
+              name="userType"
+              id="employee"
+              onChange={() => setUserType('employee')}
+            />
+          </Form.Group>
         <Col>
           <Form.Group className="mb-3" controlId="Reister">
-            <Form.Label>First name</Form.Label>
+            <Form.Label>Vardas</Form.Label>
             <Form.Control
               required
               type="text"
-              placeholder="First name"
+              placeholder="Įveskite vardą"
               onChange={(event) => setName(event.target.value)}
               />
           </Form.Group>
         </Col>
         <Col>
           <Form.Group className="mb-3" controlId="Reister">
-            <Form.Label>Last name</Form.Label>
+            <Form.Label>Pavardė</Form.Label>
             <Form.Control
               required
               type="text"
-              placeholder="Last name"
+              placeholder="Įveskitę pavardę"
               onChange={(event) => setSurname(event.target.value)}
               />
           </Form.Group>
         </Col>
         </Row>
-        <Form.Group className="mb-3" controlId="Reister">
-          <Form.Label>Username</Form.Label>
+        <Form.Group className="mb-3" controlId="Gender">
+          <Form.Label>Lytis</Form.Label>
+          <Form.Select
+            onChange={(event) => setGender(event.target.value)}
+          >
+            <option value="">Pasirinkite lytį</option>
+            <option value="male">Vyras</option>
+            <option value="female">Moteris</option>
+            <option value="other">Kita</option>
+          </Form.Select>
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="Register">
+          <Form.Label>Miestas</Form.Label>
           <Form.Control
             required
             type="text"
-            placeholder="Username"
-            onChange={(event) => setUser(event.target.value)}
+            placeholder="City"
+            onChange={(event) => setCity(event.target.value)}
           />
         </Form.Group>
-        <Form.Group className="mb-3" controlId="Reister">
-          <Form.Label>Password</Form.Label>
+        <Form.Group className="mb-3" controlId="Register">
+          <Form.Label>El.paštas</Form.Label>
+          <Form.Control
+            required
+            type="text"
+            placeholder="Įveskite el. paštą"
+            onChange={(event) => setPostalCode(event.target.value)}
+          />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="Register">
+          <Form.Label>Telefono numeris</Form.Label>
+          <Form.Control
+            required
+            type="tel"
+            placeholder="Įveskite telefono numerį"
+            onChange={(event) => setPhoneNumber(event.target.value)}
+          />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="Register">
+          <Form.Label>Slaptažodis</Form.Label>
           <Form.Control
             required
             type="password"
-            placeholder="Password"
+            placeholder="Įveskite slaptažodį"
             onChange={(event) => setPwd(event.target.value)}
           />
         </Form.Group>
-        <Form.Group className="mb-3" controlId="Reister">
-          <Form.Label>Repeat password</Form.Label>
+        <Form.Group className="mb-3" controlId="Register">
+          <Form.Label>Pakartokite slaptažodį</Form.Label>
           <Form.Control
             required
             type="password"
-            placeholder="Password"
-            onChange={(event) => setPwdr(event.target.value)}
+            placeholder="Dar kartą įveskite slaptažodį"
+            onChange={(event) => setConfirmPwd(event.target.value)}
           />
         </Form.Group>
-        <Form.Group className="mb-3" controlId="Reister">
-          <Form.Label>Email</Form.Label>
+
+        <Form.Group className="mb-3" controlId="Register">
+          <Form.Label>Gimimo data</Form.Label>
           <Form.Control
             required
-            type="email"
-            placeholder="Email"
-            onChange={(event) => setEmail(event.target.value)}
+            type="date"
+            onChange={(event) => setBirthdate(event.target.value)}
           />
         </Form.Group>
-        <Button className="mb-3" type="submit">Register</Button>
+        <Form.Group className="mb-3" controlId="Register">
+          <Form.Label>LinkedIn URL</Form.Label>
+          <Form.Control
+            type="url"
+            placeholder="Įveskite LinkedIn URL"
+            onChange={(event) => setLinkedinUrl(event.target.value)}
+          />
+        </Form.Group>
+
+        <Button className="mb-3" type="submit">Registruotis</Button>
       </Form>
       <p className='text-danger'>{errMsg}</p>
     </div>

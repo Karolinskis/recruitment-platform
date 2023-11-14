@@ -41,13 +41,13 @@ function AdminDashBoard() {
     <div className="container bg-white rounded text-center">
       <h1>Administratoriaus skydelis</h1>
       <p className="text-danger">{errMsg}</p>
-      <div className="mx-auto w-25">
+      <div className="mx-auto w-30">
         <div className="row">
           <Stack direction="horizontal" gap={2}>
             <h2>
               Nekorektiškos paskyros <Badge variant="danger">10</Badge>
             </h2>
-            <Button variant="secondary" onClick={() => Navigate("/admin/offending-content")}>Peržiūrėti</Button>
+            <Button variant="secondary" onClick={() => Navigate("/admin/offendingContent/users")}>Peržiūrėti</Button>
           </Stack>
         </div>
         <div className="row">
@@ -55,7 +55,20 @@ function AdminDashBoard() {
             <h2>
               Nekorektiški skelbimai <Badge variant="danger">10</Badge>
             </h2>
-            <Button variant="secondary" onClick={() => Navigate("/admin/offending-content")}>Peržiūrėti</Button>
+            <Button variant="secondary" onClick={() => Navigate("/admin/offendingContent/posts")}>Peržiūrėti</Button>
+          </Stack>
+        </div>
+
+        <div className="row">
+          <Stack direction="horizontal" gap={2}>
+            <h2>Peržiūrėti visus skelbimus</h2>
+            <Button variant="secondary" onClick={() => Navigate("/admin/posts")}>Peržiūrėti</Button>
+          </Stack>
+        </div>
+        <div className="row">
+          <Stack direction="horizontal" gap={2}>
+            <h2>Peržiūrėti visus vartotojus</h2>
+            <Button variant="secondary" onClick={() => Navigate("/admin/users")}>Peržiūrėti</Button>
           </Stack>
         </div>
       </div>
