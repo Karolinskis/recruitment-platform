@@ -77,6 +77,18 @@ function AppRoutes() {
         <Route path="jobsad-view/:id" element={<JobAdView />} />
         <Route path="job/create" element={<JobOfferCreate />} />
 
+ worker
+
+          <Route path="account/edit" element={<EditAccount />} />
+          <Route path="jobsad/id" element={<JobOffer />} />
+          <Route path="jobOffer" element={<JobOffer/>} />
+          <Route path="createAccount" element={<CreateRecruiterAccount />} />
+          <Route path="job" element={<JobAd />} />
+          <Route path="jobsad/edit/:id" element={<JobAdEdit />} />
+          <Route path="jobsad-view/:id" element={<JobAdView />} />
+          <Route path="job/create" element={<JobOfferCreate />} />
+        
+ main
         {/* Admin */}
         <Route path="admin/dashboard" element={<AdminDashBoard />} />
         <Route

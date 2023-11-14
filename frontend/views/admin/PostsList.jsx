@@ -106,6 +106,7 @@ function PostsList() {
             </tbody>
         </Table>
 
+
         <Modal show={showModal} onHide={handleCloseModal}>
             <Modal.Header closeButton>
                 <Modal.Title>Detali peržiūra</Modal.Title>

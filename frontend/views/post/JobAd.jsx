@@ -14,10 +14,43 @@ function JobAdsPage() {
   const [filteredAds, setFilteredAds] = useState([]);
   const [filter, setFilter] = useState("");
 
+  const [showModal, setShowModal] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(null);
+
   const headers = {
     "Content-Type": "application/json",
     Authorization: `Bearer ${auth.token}`,
   };
+
+  const handleViewDetails = (item) => {
+    setSelectedItem(item);
+    setShowModal(true);
+};
+
+/**
+ * Closes the modal.
+ */
+const handleCloseModal = () => {
+    setShowModal(false);
+};
+
+const [posts, setPosts] = useState([
+    {
+        id: 1,
+        name: "Junior programų inžinierius",
+        salary: "10",
+        about: "C# backend"
+        
+    },
+    {
+        id: 2,
+        name: "Junior testavimo inžinierius",
+        salary: "10",
+        about: "Java"
+    },
+]);
+
+const contentData = posts;
 
   // useEffect(() => {
   //   axios
@@ -56,7 +89,7 @@ function JobAdsPage() {
             X
           </Button>
         </InputGroup>
-      </>
+  </>
       <Table responsive>
         <thead>
           <tr>
@@ -69,9 +102,32 @@ function JobAdsPage() {
           </tr>
         </thead>
         <tbody>
-          <JobAdsTable jobAds={filteredAds} />
+          <JobAdsTable jobAds={posts} />
+          
         </tbody>
       </Table>
+
+
+
+      {/*<Modal show={showModal} onHide={handleCloseModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>Detali peržiūra</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          {/*Display detailed view of the item here
+          {selectedItem && (
+              <div>
+                  <p><b>ID:</b> {selectedItem.id}</p>
+                  <p><b>Pavadinimas:</b> {selectedItem.name}</p>
+                  <p><b>Atlyginimas:</b> {selectedItem.wage}</p>
+                  <p><b>Aprašymas:</b> {selectedItem.about}</p>
+              </div>
+          )}
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCloseModal}>Uždaryti</Button>
+        </Modal.Footer>
+      </Modal>*/}
     </div>
   );
 }

@@ -27,53 +27,53 @@ function AccountPage() {
   let navigate = useNavigate();
   return (
     <div className="container bg-white rounded">
-      <h1 className="text-center">Account page</h1>
+      <h1 className="text-center">Paskyros puslapis</h1>
       <br/>
-      <Button style={{display: 'inline-block', margin: '10px'}} className="mb-3" onClick={() => {navigate("/account/CV")}}>CV upload</Button>
+      <Button style={{display: 'inline-block', margin: '10px'}} className="mb-3" onClick={() => {navigate("/account/CV")}}>CV įkėlimas</Button>
 
-      <Button style={{display: 'inline-block', margin: '10px'}} className="mb-3" onClick={() => {navigate("/account/import")}}>import data from linkedin</Button>
+      <Button style={{display: 'inline-block', margin: '10px'}} className="mb-3" onClick={() => {navigate("/account/import")}}>Importuoti duomenis iš LinkedIn</Button>
 
-      <Button style={{display: 'inline-block', margin: '10px'}} className="mb-3" onClick={() => {navigate("/account/passwordChange")}}>Reset password</Button>
+      <Button style={{display: 'inline-block', margin: '10px'}} className="mb-3" onClick={() => {navigate("/account/passwordChange")}}>Pakeisti slaptažodį</Button>
 
-      <Button style={{display: 'inline-block', margin: '10px'}} className="mb-3" onClick={() => {navigate("/account/edit")}}>edit account</Button>
+      <Button style={{display: 'inline-block', margin: '10px'}} className="mb-3" onClick={() => {navigate("/account/edit")}}>Redaguoti paskyrą</Button>
 
-      <Button style={{display: 'inline-block', margin: '10px'}} className="mb-3" onClick={() => {navigate("/account/deleteUser")}}>DELETE account</Button>
+      <Button style={{display: 'inline-block', margin: '10px'}} className="mb-3" onClick={() => {navigate("/account/deleteUser")}}>Ištrinti paskyrą</Button>
       <br/><br/>
 
-      <h1 className="text-center">Your info</h1>
+      <h1 className="text-center">Jūsų duomenys</h1>
       <Table striped border hover >
         <tbody>
           <tr>
-            <td>First Name</td>
+            <td>Vardas</td>
             <td>{data.firstName}</td>
           </tr>
           <tr>
-            <td>Last Name</td>
+            <td>Pavardė</td>
             <td>{data.lastName}</td>
           </tr>
           <tr>
-            <td>Username</td>
-            <td>{data.username}</td>
+            <td>Lytis</td>
+            <td>{data.gender}</td>
           </tr>
           <tr>
-            <td>Birthday</td>
-            <td>{data.birthdayDate}</td>
+            <td>Miestas</td>
+            <td>{data.city}</td>
           </tr>
           <tr>
-            <td>LinkedIn URL</td>
-            <td>{data.linkedInURL}</td>
+            <td>Elektroninis paštas</td>
+            <td>{data.email}</td>
           </tr>
           <tr>
-            <td>About</td>
-            <td>{data.about}</td>
-          </tr>
-          <tr>
-            <td>Phone Number</td>
+            <td>Telefono numeris</td>
             <td>{data.phoneNumber}</td>
           </tr>
           <tr>
-            <td>Email</td>
-            <td>{data.email}</td>
+            <td>Gimimo data</td>
+            <td>{data.birthdayDate}</td>
+          </tr>
+          <tr>
+            <td>LinkedIn profilio URL</td>
+            <td>{data.linkedin}</td>
           </tr>
         </tbody>
       </Table>
