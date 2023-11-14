@@ -2,6 +2,7 @@ import React from "react";
 import { Card, Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faHeartBroken } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 
 const EmployerCard = ({
   picture,
@@ -12,6 +13,8 @@ const EmployerCard = ({
   linkedinUrl,
   approved,
 }) => {
+  const navigate = useNavigate(); // Initialize the navigate function
+
   return (
     <Card className="mb-3">
       {/* Make the picture a clickable link */}
@@ -56,7 +59,16 @@ const EmployerCard = ({
         {approved && (
           <img src="green_tick.jpg" alt="Approved" width="20" height="20" />
         )}
-        {approved}
+        {/* Write Review Button */}
+        <Button
+          variant="primary"
+          size="sm"
+          onClick={() => {
+            navigate("/employee/review");
+          }}
+        >
+          Reviews
+        </Button>
       </Card.Body>
     </Card>
   );
