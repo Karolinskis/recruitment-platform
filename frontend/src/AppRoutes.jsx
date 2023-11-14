@@ -43,7 +43,7 @@ import MyProfile from "../views/employee/MyProfile";
 import EmployerList from "../views/employee/EmployerListPage";
 import Review from "../views/employee/EmployerReviewPage";
 import EmployeeJobOffer from "../views/employee/JobOffersPage";
-
+import WeekCalendar from "../views/employee/WeekCallendar";
 function AppRoutes() {
   return (
     <Routes>
@@ -114,6 +114,7 @@ function AppRoutes() {
         <Route path="EmployersListPage" element={<EmployerList />} />
         <Route path="/employee/review" element={<Review />} />
         <Route path="/offers" element={<EmployeeJobOffer />} />
+        <Route path="/callendar" element={<WeekCalendar />} />
         <Route path="*" element={<Error404 />} />
       </Route>
     </Routes>

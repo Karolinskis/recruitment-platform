@@ -86,7 +86,7 @@ function Navigation() {
                 navigate("offers");
               }}
             >
-              Darbo pasiūlymai
+              Darbo pasilymai
             </Button>
             <Button
               className="m-2"
@@ -101,10 +101,19 @@ function Navigation() {
               className="m-2"
               variant="light"
               onClick={() => {
-                navigate("/employeeEmployersListPage");
+                navigate("/EmployersListPage");
               }}
             >
               Darbdavių sąrašas
+            </Button>
+            <Button
+              className="m-2"
+              variant="light"
+              onClick={() => {
+                navigate("/callendar");
+              }}
+            >
+              Užimtumo kalendorius
             </Button>
             <Button
               className="m-2"
