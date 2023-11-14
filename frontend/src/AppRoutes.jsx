@@ -36,8 +36,12 @@ import AdminUsersList from "../views/admin/UserList";
 // Errors
 import Error404 from "../views/Error404";
 import DeleteAccountPage from "../views/account/DeleteAccount";
+ 
+import FallowedWorkersListPage from "../views/employee/FallowedEmployersListPage";
+
 // Employee
 import EmployeeSkills from "../views/employee/EmployeeSkillsPage";
+ 
 
 function AppRoutes() {
   return (
@@ -73,11 +77,17 @@ function AppRoutes() {
         <Route path="jobOffer" element={<JobOffer />} />
         <Route path="createAccount" element={<CreateRecruiterAccount />} />
         <Route path="job" element={<JobAd />} />
+
+        <Route path="jobsad/edit/:id" element={<JobAdEdit />} />
+        <Route path="jobsad-view/:id" element={<JobAdView />} />
+        <Route path="job/create" element={<JobOfferCreate />} />
+
+
         <Route path="jobsad/:id" element={<JobAdEdit />} />
         <Route path="jobsad-view/:id" element={<JobAdView />} />
         <Route path="job/create" element={<JobOfferCreate />} />
 
- worker
+
 
           <Route path="account/edit" element={<EditAccount />} />
           <Route path="jobsad/id" element={<JobOffer />} />
@@ -88,7 +98,7 @@ function AppRoutes() {
           <Route path="jobsad-view/:id" element={<JobAdView />} />
           <Route path="job/create" element={<JobOfferCreate />} />
         
- main
+
         {/* Admin */}
         <Route path="admin/dashboard" element={<AdminDashBoard />} />
         <Route
@@ -98,9 +108,16 @@ function AppRoutes() {
         <Route path="admin/posts" element={<AdminPostsList />} />
         <Route path="admin/users" element={<AdminUsersList />} />
 
+
         {/* Employee */}
         <Route path="employee/EmployeeSkills" element={<EmployeeSkills />} />
 
+
+        {/* Domas */}
+        <Route
+          path="employee/FallowedEmployers"
+          element={<FallowedWorkersListPage />}
+        ></Route>
         <Route path="*" element={<Error404 />} />
       </Route>
     </Routes>
