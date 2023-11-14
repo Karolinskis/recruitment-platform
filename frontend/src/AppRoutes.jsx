@@ -36,7 +36,12 @@ import AdminUsersList from "../views/admin/UserList";
 // Errors
 import Error404 from "../views/Error404";
 import DeleteAccountPage from "../views/account/DeleteAccount";
+ 
 import FallowedWorkersListPage from "../views/employee/FallowedEmployersListPage";
+
+// Employee
+import EmployeeSkills from "../views/employee/EmployeeSkillsPage";
+ 
 
 function AppRoutes() {
   return (
@@ -72,9 +77,27 @@ function AppRoutes() {
         <Route path="jobOffer" element={<JobOffer />} />
         <Route path="createAccount" element={<CreateRecruiterAccount />} />
         <Route path="job" element={<JobAd />} />
+
         <Route path="jobsad/edit/:id" element={<JobAdEdit />} />
         <Route path="jobsad-view/:id" element={<JobAdView />} />
         <Route path="job/create" element={<JobOfferCreate />} />
+
+
+        <Route path="jobsad/:id" element={<JobAdEdit />} />
+        <Route path="jobsad-view/:id" element={<JobAdView />} />
+        <Route path="job/create" element={<JobOfferCreate />} />
+
+
+
+          <Route path="account/edit" element={<EditAccount />} />
+          <Route path="jobsad/id" element={<JobOffer />} />
+          <Route path="jobOffer" element={<JobOffer/>} />
+          <Route path="createAccount" element={<CreateRecruiterAccount />} />
+          <Route path="job" element={<JobAd />} />
+          <Route path="jobsad/edit/:id" element={<JobAdEdit />} />
+          <Route path="jobsad-view/:id" element={<JobAdView />} />
+          <Route path="job/create" element={<JobOfferCreate />} />
+        
 
         {/* Admin */}
         <Route path="admin/dashboard" element={<AdminDashBoard />} />
@@ -84,6 +107,11 @@ function AppRoutes() {
         />
         <Route path="admin/posts" element={<AdminPostsList />} />
         <Route path="admin/users" element={<AdminUsersList />} />
+
+
+        {/* Employee */}
+        <Route path="employee/EmployeeSkills" element={<EmployeeSkills />} />
+
 
         {/* Domas */}
         <Route
