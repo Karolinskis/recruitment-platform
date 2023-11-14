@@ -83,6 +83,15 @@ function Navigation() {
               className="m-2"
               variant="light"
               onClick={() => {
+                navigate("offers");
+              }}
+            >
+              Darbo pasiūlymai
+            </Button>
+            <Button
+              className="m-2"
+              variant="light"
+              onClick={() => {
                 navigate("/employee/MyProfile");
               }}
             >
@@ -92,7 +101,7 @@ function Navigation() {
               className="m-2"
               variant="light"
               onClick={() => {
-                navigate("/EmployersListPage");
+                navigate("/employeeEmployersListPage");
               }}
             >
               Darbdavių sąrašas
@@ -158,6 +167,7 @@ function Navigation() {
             >
               Rate Worker
             </Button>
+
             <Button
               className="m-2"
               variant="light"

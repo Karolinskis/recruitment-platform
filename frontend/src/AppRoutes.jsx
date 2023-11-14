@@ -42,6 +42,7 @@ import FallowedWorkersListPage from "../views/employee/FallowedEmployersListPage
 import MyProfile from "../views/employee/MyProfile";
 import EmployerList from "../views/employee/EmployerListPage";
 import Review from "../views/employee/EmployerReviewPage";
+import EmployeeJobOffer from "../views/employee/JobOffersPage";
 
 function AppRoutes() {
   return (
@@ -112,7 +113,7 @@ function AppRoutes() {
         ></Route>
         <Route path="EmployersListPage" element={<EmployerList />} />
         <Route path="/employee/review" element={<Review />} />
-
+        <Route path="/offers" element={<EmployeeJobOffer />} />
         <Route path="*" element={<Error404 />} />
       </Route>
     </Routes>

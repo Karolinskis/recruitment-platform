@@ -14,7 +14,7 @@ const JobOffersPage = () => {
 
   return (
     <div>
-      <h2>Job Offers</h2>
+      <h2>Darbo pasiūlymai</h2>
       <JobOffer
         title="Software Developer"
         date="2023-12-01"
