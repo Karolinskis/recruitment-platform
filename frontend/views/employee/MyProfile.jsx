@@ -4,7 +4,7 @@ import EmployeeSkillsCard from "../../components/EmployeeSkillCard";
 import { Container, Row, Col } from "react-bootstrap";
 import AddSkillCard from "../../components/SkillsManagementCard";
 
-export default function EmployeeSkillsPage() {
+export default function MyAccountProfile() {
   const frontendSkills = ["JavaScript", "React", "HTML", "CSS"];
   const backendSkills = ["Node.js", "Express", "MongoDB", "RESTful API"];
   const languages = ["German", "Latvian", "French", "Spanish", "Chinese"];
