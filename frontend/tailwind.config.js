@@ -1,25 +1,8 @@
-
-module.exports = {
-  content: ["./src/**/*.html", "./src/**/*.js", "./src/**/*.vue"],
-
-// tailwind.config.js
-module.exports = {
-  content: [
-    "./src/**/*.{html,js,jsx}",
-    "./components/**/*.{js,jsx}",
-    "./views/**/*.{js,jsx}",
-  ],
-
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: ["./views/**/*.{html,js,jsx", "./components/**/*.{html,js,jsx"],
   theme: {
-    // ...
+    extend: {},
   },
-  plugins: [
-
-    // ...
-
-    require("tailwindcss"),
-    require("autoprefixer"),
-    // Add other PostCSS plugins as needed
-
-  ],
+  plugins: [],
 };

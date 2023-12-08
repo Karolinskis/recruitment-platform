@@ -44,6 +44,10 @@ import EmployerList from "../views/employee/EmployerListPage";
 import Review from "../views/employee/EmployerReviewPage";
 import EmployeeJobOffer from "../views/employee/JobOffersPage";
 import WeekCalendar from "../views/employee/WeekCallendar";
+
+/// TAILWIND
+import TailwindCSS from "../styles/output.css";
+
 function AppRoutes() {
   return (
     <Routes>

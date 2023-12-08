@@ -3,6 +3,7 @@ import MyProfile from "../../components/MyProfile";
 import EmployeeSkillsCard from "../../components/EmployeeSkillCard";
 import { Container, Row, Col } from "react-bootstrap";
 import AddSkillCard from "../../components/SkillsManagementCard";
+import { Await } from "react-router-dom";
 
 export default function MyAccountProfile() {
   const frontendSkills = ["JavaScript", "React", "HTML", "CSS"];
