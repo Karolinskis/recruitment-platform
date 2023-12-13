@@ -1,0 +1,216 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+/// TIK naudotojas ---> Darbuotojui. Kitu atvejeu daryt kitaip
+model atsiliepimai {
+  aprasymas                  String?    @db.VarChar(255)
+  tipas                      Boolean?
+  id_Atsiliepimas            Int        @id @default(autoincrement())
+  fk_Naudotojasid_Naudotojas Int
+  fk_darbuotojas             Int
+  rasytiAtsiliepima          darbdavys  @relation(fields: [fk_darbuotojas], references: [id])
+  naudotojai                 naudotojai @relation(fields: [fk_Naudotojasid_Naudotojas], references: [id_Naudotojas], onUpdate: Restrict, map: "naudotojas_pildo_atsiliepima")
+
+  @@index([fk_Naudotojasid_Naudotojas], map: "naudotojas_pildo_atsiliepima")
+  @@index([fk_darbuotojas], map: "atsiliepimai_fk_darbuotojas_fkey")
+}
+
+model atsiliepimo_tipai {
+  id_atsiliepimo_tipai Int    @id
+  name                 String @db.VarChar(13)
+}
+
+model darbdavys {
+  id                   Int                    @id @unique
+  atsiliepimai         atsiliepimai[]
+  naudotojai           naudotojai             @relation(fields: [id], references: [id_Naudotojas])
+  naudotoju_patiktukai naudotoju_patiktukai[]
+}
+
+model darbo_pasiulymai {
+  pavadinimas                                                         String?          @db.VarChar(255)
+  data                                                                DateTime?        @db.Date
+  aprasymas                                                           String?          @db.VarChar(255)
+  id_Darbo_pasiulymas                                                 Int              @id
+  fk_Skelbimo_anketaid_Skelbimo_anketa                                Int
+  fk_Darbo_skelbimasid_Darbo_skelbimas                                Int
+  fk_Naudotojasid_Naudotojas                                          Int
+  fk_Uzsakymasid_Uzsakymas                                            Int?
+  fk_Naudotojasid_Naudotojas1                                         Int
+  uzsakymai                                                           uzsakymai?       @relation(fields: [fk_Uzsakymasid_Uzsakymas], references: [id_Uzsakymas], onDelete: Restrict, onUpdate: Restrict, map: "Darbutojas_patvirtitina")
+  naudotojai_darbo_pasiulymai_fk_Naudotojasid_Naudotojas1Tonaudotojai naudotojai       @relation("darbo_pasiulymai_fk_Naudotojasid_Naudotojas1Tonaudotojai", fields: [fk_Naudotojasid_Naudotojas1], references: [id_Naudotojas], onUpdate: Restrict, map: "darbdavys_siuncia_pasiulyma")
+  darbo_skelbimai                                                     darbo_skelbimai  @relation(fields: [fk_Darbo_skelbimasid_Darbo_skelbimas], references: [id_Darbo_skelbimas], onUpdate: Restrict, map: "darboSkelbimas_turi_darboPasiulyma")
+  naudotojai_darbo_pasiulymai_fk_Naudotojasid_NaudotojasTonaudotojai  naudotojai       @relation("darbo_pasiulymai_fk_Naudotojasid_NaudotojasTonaudotojai", fields: [fk_Naudotojasid_Naudotojas], references: [id_Naudotojas], onUpdate: Restrict, map: "darbuotojas_gauna_pasiulyma")
+  skelbimu_anketos                                                    skelbimu_anketos @relation(fields: [fk_Skelbimo_anketaid_Skelbimo_anketa], references: [id_Skelbimo_anketa], onUpdate: Restrict, map: "skelbimoAnketa_turi_darboPasiulymas")
+
+  @@index([fk_Uzsakymasid_Uzsakymas], map: "Darbutojas_patvirtitina")
+  @@index([fk_Naudotojasid_Naudotojas1], map: "darbdavys_siuncia_pasiulyma")
+  @@index([fk_Darbo_skelbimasid_Darbo_skelbimas], map: "darboSkelbimas_turi_darboPasiulyma")
+  @@index([fk_Naudotojasid_Naudotojas], map: "darbuotojas_gauna_pasiulyma")
+  @@index([fk_Skelbimo_anketaid_Skelbimo_anketa], map: "skelbimoAnketa_turi_darboPasiulymas")
+}
+
+model darbo_skelbimai {
+  pavadinimas                String?            @db.VarChar(255)
+  data                       DateTime?          @db.Date
+  aprasymas                  String?            @db.VarChar(255)
+  atlyginimas                String?            @db.VarChar(255)
+  trukme                     DateTime?          @db.Date
+  id_Darbo_skelbimas         Int                @id
+  fk_Projektasid_Projektas   Int
+  fk_Naudotojasid_Naudotojas Int
+  darbo_pasiulymai           darbo_pasiulymai[]
+  naudotojai                 naudotojai         @relation(fields: [fk_Naudotojasid_Naudotojas], references: [id_Naudotojas], onUpdate: Restrict, map: "Sukuria")
+  projektai                  projektai          @relation(fields: [fk_Projektasid_Projektas], references: [id_Projektas], onUpdate: Restrict, map: "projektas_turi_darboSkelbima")
+
+  @@index([fk_Naudotojasid_Naudotojas], map: "Sukuria")
+  @@index([fk_Projektasid_Projektas], map: "projektas_turi_darboSkelbima")
+}
+
+model igudziai {
+  pavadinimas                  String?    @db.VarChar(255)
+  sertifikatas                 String?    @db.VarChar(255)
+  id_igudziai                  Int        @id
+  fk_Darbuotojasid_Darbuotojas Int
+  fk_Naudotojasid_Naudotojas   Int
+  naudotojai                   naudotojai @relation(fields: [fk_Naudotojasid_Naudotojas], references: [id_Naudotojas], onUpdate: Restrict, map: "naudotojas_turi_igudzius")
+
+  @@index([fk_Naudotojasid_Naudotojas], map: "naudotojas_turi_igudzius")
+}
+
+model naudotojai {
+  vardas                                                                    String?                @db.VarChar(255)
+  pavarde                                                                   String?                @db.VarChar(255)
+  lytis                                                                     String?                @db.VarChar(255)
+  miestas                                                                   String?                @db.VarChar(255)
+  el_pastas                                                                 String?                @db.VarChar(255)
+  tel_numeris                                                               String?                @db.VarChar(255)
+  slaptazodis                                                               String?                @db.VarChar(255)
+  gimimo_data                                                               DateTime?              @db.Date
+  linkedin_url                                                              String?                @db.VarChar(255)
+  paskyros_sukurimo_data                                                    DateTime?              @default(now()) @db.Date
+  patvirtintas                                                              Boolean?
+  blokavimo_pabaiga                                                         DateTime?              @db.Date
+  role                                                                      Int?
+  id_Naudotojas                                                             Int                    @id
+  atsiliepimai                                                              atsiliepimai[]
+  darbdavys                                                                 darbdavys?
+  darbo_pasiulymai_darbo_pasiulymai_fk_Naudotojasid_Naudotojas1Tonaudotojai darbo_pasiulymai[]     @relation("darbo_pasiulymai_fk_Naudotojasid_Naudotojas1Tonaudotojai")
+  darbo_pasiulymai_darbo_pasiulymai_fk_Naudotojasid_NaudotojasTonaudotojai  darbo_pasiulymai[]     @relation("darbo_pasiulymai_fk_Naudotojasid_NaudotojasTonaudotojai")
+  darbo_skelbimai                                                           darbo_skelbimai[]
+  igudziai                                                                  igudziai[]
+  roles                                                                     roles?                 @relation(fields: [role], references: [id_roles], onDelete: Restrict, onUpdate: Restrict, map: "naudotojai_ibfk_1")
+  naudotoju_patiktukai                                                      naudotoju_patiktukai[]
+  nuotraukos                                                                nuotraukos[]
+  pranesimai                                                                pranesimai[]
+  skelbimu_anketos                                                          skelbimu_anketos[]
+  uzimtumo_grafikai                                                         uzimtumo_grafikai[]
+
+  @@index([role], map: "role")
+}
+
+model naudotoju_patiktukai {
+  darbuotojas_id Int
+  darbdavys_id   Int
+  darbdavys      darbdavys  @relation(fields: [darbdavys_id], references: [id])
+  naudotojai     naudotojai @relation(fields: [darbuotojas_id], references: [id_Naudotojas])
+
+  @@id([darbuotojas_id, darbdavys_id])
+  @@unique([darbdavys_id, darbuotojas_id])
+}
+
+model nuotraukos {
+  url                        String?    @db.VarChar(255)
+  pavadinimas                String?    @db.VarChar(255)
+  alternatyvus_tekstas       String?    @db.VarChar(255)
+  id_Nuotrauka               Int        @id
+  fk_Naudotojasid_Naudotojas Int
+  naudotojai                 naudotojai @relation(fields: [fk_Naudotojasid_Naudotojas], references: [id_Naudotojas], onUpdate: Restrict, map: "naudotojas_ikelia_nuotraukas")
+
+  @@index([fk_Naudotojasid_Naudotojas], map: "naudotojas_ikelia_nuotraukas")
+}
+
+model pranesimai {
+  laikas                     DateTime?  @db.Date
+  pavadinimas                String?    @db.VarChar(255)
+  trumpas_aprasymas          String?    @db.VarChar(255)
+  aprasymas                  String?    @db.VarChar(255)
+  id_Prane_imas              Int        @id @map("id_Pranešimas")
+  fk_Naudotojasid_Naudotojas Int
+  naudotojai                 naudotojai @relation(fields: [fk_Naudotojasid_Naudotojas], references: [id_Naudotojas], onUpdate: Restrict, map: "naudotojas_gauna_pranesima")
+
+  @@index([fk_Naudotojasid_Naudotojas], map: "naudotojas_gauna_pranesima")
+}
+
+model projektai {
+  pavadinimas     String?           @db.VarChar(255)
+  aprasymas       String?           @db.VarChar(255)
+  pradzia         DateTime?         @db.Date
+  pabaiga         DateTime?         @db.Date
+  id_Projektas    Int               @id
+  darbo_skelbimai darbo_skelbimai[]
+  uzduotys        uzduotys[]
+}
+
+model roles {
+  id_roles   Int          @id
+  name       String       @db.VarChar(16)
+  naudotojai naudotojai[]
+}
+
+model skelbimu_anketos {
+  pavadinimas                  String?            @db.VarChar(255)
+  aprasymas                    String?            @db.VarChar(255)
+  valandinis_atlyginimas       Float?
+  validuota                    Boolean?
+  id_Skelbimo_anketa           Int                @id
+  fk_Darbuotojasid_Darbuotojas Int                @unique(map: "fk_Darbuotojasid_Darbuotojas")
+  fk_Naudotojasid_Naudotojas   Int
+  darbo_pasiulymai             darbo_pasiulymai[]
+  naudotojai                   naudotojai         @relation(fields: [fk_Naudotojasid_Naudotojas], references: [id_Naudotojas], onUpdate: Restrict, map: "w")
+
+  @@index([fk_Naudotojasid_Naudotojas], map: "w")
+}
+
+model uzduotys {
+  pavadinimas              String?   @db.VarChar(255)
+  pradzia                  DateTime? @db.Date
+  pabaiga                  DateTime? @db.Date
+  aprasymas                String?   @db.VarChar(255)
+  id_Uzduotis              Int       @id
+  fk_Uzsakymasid_Uzsakymas Int
+  fk_Projektasid_Projektas Int
+  projektai                projektai @relation(fields: [fk_Projektasid_Projektas], references: [id_Projektas], onUpdate: Restrict, map: "projektas_turi_uzduoti")
+  uzsakymai                uzsakymai @relation(fields: [fk_Uzsakymasid_Uzsakymas], references: [id_Uzsakymas], onUpdate: Restrict, map: "uzsakymas_turi_uzduoti")
+
+  @@index([fk_Projektasid_Projektas], map: "projektas_turi_uzduoti")
+  @@index([fk_Uzsakymasid_Uzsakymas], map: "uzsakymas_turi_uzduoti")
+}
+
+model uzimtumo_grafikai {
+  pavadinimas                String?    @db.VarChar(255)
+  pradzia                    DateTime?  @db.Date
+  pabaiga                    DateTime?  @db.Date
+  id_Uzimtumo_grafikas       Int        @id
+  fk_Naudotojasid_Naudotojas Int
+  naudotojai                 naudotojai @relation(fields: [fk_Naudotojasid_Naudotojas], references: [id_Naudotojas], onUpdate: Restrict, map: "naudotojas_pildo_grafika")
+
+  @@index([fk_Naudotojasid_Naudotojas], map: "naudotojas_pildo_grafika")
+}
+
+model uzsakymai {
+  pavadinimas              String?            @db.VarChar(255)
+  aprasymas                String?            @db.VarChar(255)
+  pradzia                  DateTime?          @db.Date
+  pabaiga                  DateTime?          @db.Date
+  id_Uzsakymas             Int                @id
+  fk_Darbdavysid_Darbdavys Int
+  darbo_pasiulymai         darbo_pasiulymai[]
+  uzduotys                 uzduotys[]
+}
