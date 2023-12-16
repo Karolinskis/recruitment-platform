@@ -27,9 +27,8 @@ model atsiliepimo_tipai {
 }
 
 model darbdavys {
-  id                   Int                    @id @unique
+  id                   Int                    @id
   atsiliepimai         atsiliepimai[]
-  naudotojai           naudotojai             @relation(fields: [id], references: [id_Naudotojas])
   naudotoju_patiktukai naudotoju_patiktukai[]
 }
 
@@ -43,6 +42,7 @@ model darbo_pasiulymai {
   fk_Naudotojasid_Naudotojas                                          Int
   fk_Uzsakymasid_Uzsakymas                                            Int?
   fk_Naudotojasid_Naudotojas1                                         Int
+  priimtas                                                            Boolean
   uzsakymai                                                           uzsakymai?       @relation(fields: [fk_Uzsakymasid_Uzsakymas], references: [id_Uzsakymas], onDelete: Restrict, onUpdate: Restrict, map: "Darbutojas_patvirtitina")
   naudotojai_darbo_pasiulymai_fk_Naudotojasid_Naudotojas1Tonaudotojai naudotojai       @relation("darbo_pasiulymai_fk_Naudotojasid_Naudotojas1Tonaudotojai", fields: [fk_Naudotojasid_Naudotojas1], references: [id_Naudotojas], onUpdate: Restrict, map: "darbdavys_siuncia_pasiulyma")
   darbo_skelbimai                                                     darbo_skelbimai  @relation(fields: [fk_Darbo_skelbimasid_Darbo_skelbimas], references: [id_Darbo_skelbimas], onUpdate: Restrict, map: "darboSkelbimas_turi_darboPasiulyma")
@@ -66,10 +66,8 @@ model darbo_skelbimai {
   fk_Projektasid_Projektas   Int
   fk_Naudotojasid_Naudotojas Int
   darbo_pasiulymai           darbo_pasiulymai[]
-  naudotojai                 naudotojai         @relation(fields: [fk_Naudotojasid_Naudotojas], references: [id_Naudotojas], onUpdate: Restrict, map: "Sukuria")
   projektai                  projektai          @relation(fields: [fk_Projektasid_Projektas], references: [id_Projektas], onUpdate: Restrict, map: "projektas_turi_darboSkelbima")
 
-  @@index([fk_Naudotojasid_Naudotojas], map: "Sukuria")
   @@index([fk_Projektasid_Projektas], map: "projektas_turi_darboSkelbima")
 }
 
@@ -100,10 +98,8 @@ model naudotojai {
   role                                                                      Int?
   id_Naudotojas                                                             Int                    @id
   atsiliepimai                                                              atsiliepimai[]
-  darbdavys                                                                 darbdavys?
   darbo_pasiulymai_darbo_pasiulymai_fk_Naudotojasid_Naudotojas1Tonaudotojai darbo_pasiulymai[]     @relation("darbo_pasiulymai_fk_Naudotojasid_Naudotojas1Tonaudotojai")
   darbo_pasiulymai_darbo_pasiulymai_fk_Naudotojasid_NaudotojasTonaudotojai  darbo_pasiulymai[]     @relation("darbo_pasiulymai_fk_Naudotojasid_NaudotojasTonaudotojai")
-  darbo_skelbimai                                                           darbo_skelbimai[]
   igudziai                                                                  igudziai[]
   roles                                                                     roles?                 @relation(fields: [role], references: [id_roles], onDelete: Restrict, onUpdate: Restrict, map: "naudotojai_ibfk_1")
   naudotoju_patiktukai                                                      naudotoju_patiktukai[]
