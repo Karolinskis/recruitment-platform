@@ -2,11 +2,27 @@
 import React, { useEffect } from 'react';
 import Link from "next/link";
 
+interface OffendingUser {
+  id_Naudotojas: string;
+  role: string;
+  vardas: string;
+  pavarde: string;
+  lytis: string;
+  miestas: string;
+  el_pastas: string;
+  tel_numeris: string;
+  gimimo_data: string;
+  linkedin_url: string;
+  paskyros_sukurimo_data: string;
+  patvirtintas: boolean;
+  id_Skelbimo_anketa: string;
+}
+
 const OffendingRecruiterPosts = () => {
-  const [offendingUsers, setOffendingUsers] = React.useState([]);
+  const [offendingUsers, setOffendingUsers] = React.useState<OffendingUser[]>([]);
 
   useEffect(() => {
-    fetch("/api/getAllOffendingUsers")
+    fetch("/api/user/offending")
         .then(res => res.json())
         .then(data => setOffendingUsers(data))
         .catch(err => console.log(err));
