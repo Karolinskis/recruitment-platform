@@ -10,8 +10,8 @@ interface Freelancer {
 
 function HireFreelancer() {
   const [freelancers, setFreelancers] = useState<Freelancer[]>([
-    { id: 1, name: 'Freelancer A', skills: 'Web Development' },
-    { id: 2, name: 'Freelancer B', skills: 'Graphic Design' },
+    { id: 1, name: 'Darbuotojas A', skills: 'WEB dev' },
+    { id: 2, name: 'Darbuotojas B', skills: 'Grafinis dizainas' },
     // ... other freelancers
   ]);
   const [success, setSuccess] = useState(false);
@@ -26,19 +26,19 @@ function HireFreelancer() {
   return (
     <div className="flex flex-col items-center min-h-screen bg-gray-100 py-8">
       <div className="w-full max-w-4xl bg-white rounded shadow-md p-6">
-        <h1 className="text-2xl font-bold text-center text-gray-800 mb-4">Hire a Freelancer</h1>
+        <h1 className="text-2xl font-bold text-center text-gray-800 mb-4">Samdyti darbuotoją</h1>
         <div className="mb-4 overflow-x-auto">
           <table className="min-w-full text-sm text-left text-gray-500">
             <thead className="text-xs text-gray-700 uppercase bg-gray-50">
               <tr>
                 <th scope="col" className="py-3 px-6">
-                  Name
+                  Vardas
                 </th>
                 <th scope="col" className="py-3 px-6">
-                  Skills
+                  Sugebėjimai
                 </th>
                 <th scope="col" className="py-3 px-6">
-                  Action
+                  Veiksmas
                 </th>
               </tr>
             </thead>
@@ -52,7 +52,7 @@ function HireFreelancer() {
                       onClick={() => offerHire(freelancer)}
                       className="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                     >
-                      Hire
+                      Samdyti
                     </button>
                   </td>
                 </tr>
