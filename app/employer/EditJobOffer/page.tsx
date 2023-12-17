@@ -9,8 +9,8 @@ interface JobOffer {
 
 function JobOffersPage() {
   const [jobOffers, setJobOffers] = useState<JobOffer[]>([
-    { id: 1, title: 'Offer 1' },
-    { id: 2, title: 'Offer 2' },
+    { id: 1, title: 'Pasiūlymas 1' },
+    { id: 2, title: 'Pasiūlymas 2' },
     // Add more template offers here
   ]);
 
@@ -27,16 +27,16 @@ function JobOffersPage() {
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100 px-4">
       <div className="bg-white rounded shadow-lg p-6 w-full max-w-4xl">
-        <h1 className="text-gray-800 text-2xl font-bold mb-4 text-center">List of Job Offers</h1>
+        <h1 className="text-gray-800 text-2xl font-bold mb-4 text-center">Darbo pasiūlymai</h1>
         <div className="overflow-x-auto mt-6">
           <table className="min-w-full leading-normal">
             <thead>
               <tr>
                 <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                  Title
+                  Pavadinimas
                 </th>
                 <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                  Actions
+                  Veiksmai
                 </th>
               </tr>
             </thead>
@@ -54,7 +54,7 @@ function JobOffersPage() {
                       className="text-white py-1 px-3 rounded bg-blue-500 hover:bg-blue-600 focus:outline-none"
                       disabled
                     >
-                      Edit
+                      Koreguoti
                     </button>
                   </td>
                 </tr>

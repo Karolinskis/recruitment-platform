@@ -34,11 +34,11 @@ const SendMessageToWorker = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold text-center mb-4">Send Message to Worker</h1>
+      <h1 className="text-2xl font-bold text-center mb-4">Siųsti el. paštą darbuotojui</h1>
       <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={sendEmail}>
         <div className="mb-4">
           <label htmlFor="from_name" className="block text-gray-700 text-sm font-bold mb-2">
-            Your Name
+            Jūsų vardas
           </label>
           <input type="text" id="from_name" name="from_name" value={fromName}
             onChange={(e) => setFromName(e.target.value)}
@@ -46,7 +46,7 @@ const SendMessageToWorker = () => {
         </div>
         <div className="mb-4">
           <label htmlFor="recipient_email" className="block text-gray-700 text-sm font-bold mb-2">
-            Recipient's Email (CC)
+            Gavėjo el. paštas
           </label>
           <input type="email" id="recipient_email" name="recipient_email" value={recipientEmail}
             onChange={(e) => setRecipientEmail(e.target.value)}
@@ -54,7 +54,7 @@ const SendMessageToWorker = () => {
         </div>
         <div className="mb-6">
           <label htmlFor="message" className="block text-gray-700 text-sm font-bold mb-2">
-            Message
+            Žinutė
           </label>
           <textarea id="message" name="message" value={message}
             onChange={(e) => setMessage(e.target.value)}
@@ -62,7 +62,7 @@ const SendMessageToWorker = () => {
         </div>
         <div className="flex items-center justify-between">
           <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
-            Send
+            Siųsti
           </button>
         </div>
       </form>
