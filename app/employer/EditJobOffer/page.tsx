@@ -1,28 +1,69 @@
 "use client";
+// /pages/EditJobOfferPage.tsx
 import React, { useState, useEffect } from 'react';
 
-// Define the interface for Job Offers
 interface JobOffer {
   id: number;
-  title: string;
+  pavadinimas: string;
+  aprasymas?: string | null;
 }
 
 function JobOffersPage() {
-  const [jobOffers, setJobOffers] = useState<JobOffer[]>([
-    { id: 1, title: 'Pasiūlymas 1' },
-    { id: 2, title: 'Pasiūlymas 2' },
-    // Add more template offers here
-  ]);
+    const [jobOffers, setJobOffers] = useState<JobOffer[]>([]);
 
   useEffect(() => {
-    // Fetch the list of job offers from the backend and set them in the state (in a real application)
+    async function fetchJobOffers() {
+      try {
+        const response = await fetch(`/api/employer/${1}/EditJobOffer/`);
+        if (!response.ok) {
+          throw new Error('Problem fetching job offers');
+        }
+        const data = await response.json();
+        setJobOffers(data);
+      } catch (error) {
+        console.error('Error fetching job offers:', error);
+      }
+    }
+    
+    fetchJobOffers();
   }, []);
 
-  // Placeholder for edit handler
-  const handleEdit = (id: number) => {
-    console.log('Edit offer with id:', id);
-    // Implement the edit logic or redirect to edit page
-  };
+    const handleEdit = async (offerId:number) => {
+  // Find the offer to edit
+  const offerToEdit = jobOffers.find((offer) => offer.id === offerId);
+  if (!offerToEdit) return;
+
+  // Prompt for new values
+  const newTitle = prompt('Enter new title:', offerToEdit.pavadinimas ?? '') ?? '';
+  const newDescription = prompt('Enter new description:', offerToEdit.aprasymas ?? '') ?? '';
+
+  // Update offer via API
+  try {
+    const response = await fetch(`/api/employer/${offerId}/EditJobOffer/`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        pavadinimas: newTitle,
+        aprasymas: newDescription,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error('Problem updating job offer');
+    }
+
+    // Update local state
+    setJobOffers(currentOffers =>
+      currentOffers.map((offer) =>
+        offer.id === offerId ? { ...offer, pavadinimas: newTitle, aprasymas: newDescription } : offer
+      )
+    );
+  } catch (error) {
+    console.error('Error updating job offer:', error);
+  }
+};
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100 px-4">
@@ -36,6 +77,9 @@ function JobOffersPage() {
                   Pavadinimas
                 </th>
                 <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                  Aprašymas
+                </th>
+                <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                   Veiksmai
                 </th>
               </tr>
@@ -44,15 +88,15 @@ function JobOffersPage() {
               {jobOffers.map((offer) => (
                 <tr key={offer.id}>
                   <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                    {offer.title}
+                    {offer.pavadinimas}
                   </td>
                   <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                    {/* Since we are not really implementing the edit functionality,
-                        this button is disabled to indicate it's not functional yet. */}
+                    {offer.aprasymas || ''}
+                  </td>
+                  <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                     <button
                       onClick={() => handleEdit(offer.id)}
                       className="text-white py-1 px-3 rounded bg-blue-500 hover:bg-blue-600 focus:outline-none"
-                      disabled
                     >
                       Koreguoti
                     </button>
