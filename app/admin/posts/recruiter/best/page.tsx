@@ -35,9 +35,9 @@ const RecruiterPosts = () => {
       .catch(err => console.log(err));
   }, []);
 
-  const filteredPosts = recruiterPosts.filter(item =>
-    item.pavadinimas.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  recruiterPosts.sort((a, b) => b.atlyginimas - a.atlyginimas);
+  
+  const topElements = recruiterPosts.slice(0, 3);
 
   return (
     <div className="flex flex-col items-center">
@@ -65,7 +65,7 @@ const RecruiterPosts = () => {
             </tr>
           </thead>
           <tbody className="text-sm font-normal text-gray-700">
-            {filteredPosts.map((item, index) => (
+            {topElements.map((item, index) => (
                 <tr key={index} className="hover:bg-gray-100 border-b border-gray-200 py-10">
                   <td className="px-4 py-4">{item.id_Darbo_skelbimas}</td>
                   <td className="px-4 py-4">{item.pavadinimas}</td>

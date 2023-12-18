@@ -70,18 +70,20 @@ export async function GET() {
     for (let word of badwords) {
         const jobSeekerPosts = await prisma.skelbimu_anketos.findMany({
             where: {
-                OR: [
-                    {
-                        pavadinimas: {
-                            contains: word
+                NOT:{
+                    OR: [
+                        {
+                            pavadinimas: {
+                                contains: word
+                            }
+                        },
+                        {
+                            aprasymas: {
+                                contains: word
+                            }
                         }
-                    },
-                    {
-                        aprasymas: {
-                            contains: word
-                        }
-                    }
-                ]
+                    ]
+                }
             }
         });
 
