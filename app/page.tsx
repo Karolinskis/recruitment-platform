@@ -1,11 +1,14 @@
-"use client";
 import React from "react";
 import Jobs from "@/public/assets/jobs.jpeg";
 import Image from "next/image";
 import Button from "./components/Button/button";
+import { getServerSession } from "next-auth";
+import { authOptions } from "./api/auth/[...nextauth]/route";
 // import Component from "./components/Carouselle/carouselle";
 
-export default function Home() {
+export default async function Home() {
+  const session = await getServerSession(authOptions);
+  console.log(session);
   return (
     <div>
       <div className="mx-10 mb-10">
