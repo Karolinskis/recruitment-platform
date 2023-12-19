@@ -21,6 +21,21 @@ const OffendingRecruiterPosts = () => {
       .catch(err => console.log(err));
   }, []);
 
+  function deletePost(id: string) {
+    console.log("Deleting post with id: " + id);
+    fetch(`/api/posts/recruiter/${id}`, {
+      method: "DELETE",
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log("Success:", data);
+      location.reload();
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+  }
+
   return (
     <div className="flex flex-col items-center">
       <h1 className="text-3xl font-bold mb-4">Nekorektiški darbdavių skelbimai</h1>
@@ -48,12 +63,14 @@ const OffendingRecruiterPosts = () => {
                   <td className="px-4 py-4">{item.atlyginimas}</td>
                   <td className="px-4 py-4">
                     {/* TODO: THIS NEEDS CHANGING */}
-                    <Link href={`/admin/offending-content/job-seeker-posts/${item.id_Skelbimo_anketa}`}> 
-                      <p className="btn bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded inline-block">Validuoti</p>
+                    <Link href={`/admin/posts/recruiter/edit?id=${item.id_Darbo_skelbimas}`}> 
+                      <p className="btn bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded inline-block">Redaguoti</p>
                     </Link>
-                    <Link href={`/admin/offending-content/job-seeker-posts/${item.id_Skelbimo_anketa}`}>
-                      <p className="btn bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded inline-block">Ištrinti</p>
-                    </Link>
+                    <button 
+                      onClick={() => deletePost(item.id_Darbo_skelbimas)} 
+                      className="btn bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded inline-block">
+                        Ištrinti
+                    </button>                    
                   </td>
                 </tr>
             ))}

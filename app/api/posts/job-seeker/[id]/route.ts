@@ -47,6 +47,7 @@ export async function PUT(request: Request, { params }: { params: { id: Number }
         pavadinimas,
         aprasymas,
         valandinis_atlyginimas : Number(valandinis_atlyginimas),
+        validuota,
     },
   });
 
