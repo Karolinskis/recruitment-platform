@@ -6,7 +6,7 @@ const OffendingJobSeekerPosts = () => {
   const [offendingJobSeekerPosts, setOffendingJobSeekerPosts] = React.useState([]);
 
   useEffect(() => {
-    fetch("/api/getAllOffendingJobSeekerPosts")
+    fetch("/api/posts/job-seeker/offending")
       .then(res => res.json())
       .then(data => setOffendingJobSeekerPosts(data))
       .catch(err => console.log(err));

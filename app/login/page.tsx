@@ -36,7 +36,7 @@ export default function login() {
             id="username"
             name="username"
             className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-purple-500"
-            placeholder="Enter your username"
+            placeholder="Įveskitę vardą"
             required
             onChange={handleEmail}
           />
@@ -53,7 +53,7 @@ export default function login() {
             id="password"
             name="password"
             className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-purple-500"
-            placeholder="Enter your password"
+            placeholder="Įveskitę slaptažodį"
             required
             onChange={handlePassword}
           />
@@ -62,8 +62,14 @@ export default function login() {
           type="submit"
           className="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 rounded transition duration-300"
         >
-          Login
+          Prisijungti
         </button>
+        <div className="mt-4 text-center">
+        Naujas vartotojas?{' '}
+        <a href="/registration" className="text-purple-700 font-semibold">
+          Registruokitės čia
+        </a>
+      </div>
       </form>
     </div>
   );
